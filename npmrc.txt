@@ -1,0 +1,11 @@
+# .npmrc — Configuración de npm para instalación consistente en local y Vercel
+#
+# strict-peer-dependencies=false evita que npm falle si hay conflictos menores
+# entre peer dependencies (Vercel usa npm por defecto, no bun).
+strict-peer-dependencies=false
+
+# auto-install-peers=true instala automáticamente las peer deps necesarias
+auto-install-peers=true
+
+# prefer-offline=true acelera instalaciones reusando caché local
+prefer-offline=true
