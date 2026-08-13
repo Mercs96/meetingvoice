@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  strings.xml — Todos los textos de la app.
+  No pongas strings literalmente en el código Kotlin/XML, defínelos aquí.
+  Esto facilita traducir la app a otros idiomas creando values-en/strings.xml, etc.
+-->
+<resources>
+    <string name="app_name">MeetingVoice</string>
+    <string name="short_name">MeetingVoice</string>
+
+    <!-- Notificación de grabación en primer plano (si la activas en el futuro) -->
+    <string name="recording_notification_title">Grabando reunión</string>
+    <string name="recording_notification_text">MeetingVoice está grabando audio en segundo plano</string>
+    <string name="recording_notification_channel">Grabación</string>
+
+    <!-- Permisos -->
+    <string name="permission_mic_rationale">MeetingVoice necesita acceso al micrófono para grabar y transcribir tus reuniones.</string>
+    <string name="permission_mic_denied">Sin permiso de micrófono no se pueden grabar reuniones. Actívalo en Ajustes → Apps → MeetingVoice → Permisos.</string>
+
+    <!-- Errores -->
+    <string name="error_no_chrome">Esta app requiere Google Chrome o un navegador compatible instalado.</string>
+    <string name="error_no_internet">Sin conexión a internet. Conéctate para usar MeetingVoice.</string>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  AndroidManifest.xml — Define la identidad y permisos de la app.
+  Es el archivo más importante. Aquí se declara:
+    - El package name (com.meetingvoice.app)
+    - Los permisos (micrófono, internet, etc.)
+    - La actividad principal (LauncherActivity)
+    - Los deep links (URLs que abren la app)
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permisos de la app -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Features opcionales (la app funciona sin ellas) -->
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeetingVoice"
+        android:usesCleartextTraffic="false"
+        tools:targetApi="34">
+
+        <!--
+          LauncherActivity — abre la PWA en Chrome dentro de una Trusted Web Activity.
+          Requiere que tengas subido assetlinks.json a tu dominio.
+          Si no está subido, Chrome mostrará una barra con el dominio.
+        -->
+        <activity
+            android:name="com.google.androidbrowserhelper.trusted.LauncherActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MeetingVoice">
+
+            <!-- URL de tu PWA publicada. ¡Cámbiala por la tuya! -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+                android:value="https://tu-dominio.com" />
+
+            <!--
+              STATUS_BAR_COLOR — color de la barra de estado (arriba del móvil).
+              Debe coincidir con theme_color del manifest.json de tu PWA.
+            -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
+                android:resource="@color/colorPrimary" />
+
+            <!--
+              NAVIGATION_BAR_COLOR — color de la barra inferior (botones Back/Home).
+            -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
+                android:resource="@color/colorPrimary" />
+
+            <!--
+              Splash screen — se muestra mientras carga Chrome por primera vez.
+              Usa la imagen en res/drawable/splash.png
+            -->
+            <meta-data
+                android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
+                android:resource="@drawable/splash" />
+
+            <meta-data
+                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
+                android:resource="@color/colorPrimary" />
+
+            <!-- Filtros para que esta actividad sea el launcher principal -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--
+              Deep links — si alguien abre https://tu-dominio.com/path,
+              se abre directamente en la app (no en navegador).
+            -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- ¡Cámbialo por tu dominio! -->
+                <data
+                    android:scheme="https"
+                    android:host="tu-dominio.com" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          DelegatedSplashActivity — para splash screen avanzada.
+          Opcional pero recomendada.
+        -->
+        <activity
+            android:name="com.google.androidbrowserhelper.trusted.DelegatedSplashActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- FileProvider para compartir archivos (exportar transcripciones, etc.) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+    </application>
+</manifest>

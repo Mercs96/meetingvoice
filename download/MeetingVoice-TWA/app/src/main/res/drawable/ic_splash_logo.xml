@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ic_splash_logo.xml — Logo vectorial del splash screen.
+  Micrófono estilizado en blanco sobre fondo violeta (el fondo lo pone splash.xml).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Círculo de fondo semi-transparente para destacar el icono -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M60,60m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" />
+
+    <!-- Cuerpo del micrófono (rounded rect) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48,28 h24 a12,12 0 0 1 12,12 v20 a12,12 0 0 1 -12,12 h-24 a12,12 0 0 1 -12,-12 v-20 a12,12 0 0 1 12,-12 z" />
+
+    <!-- Soporte del micrófono (línea vertical) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M58,74 h4 v12 h-4 z" />
+
+    <!-- Base del micrófono (línea horizontal) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,88 h32 v4 h-32 z" />
+
+    <!-- Ondas de sonido dentro del micro -->
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M52,42 h3 v14 h-3 z" />
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M58,38 h3 v22 h-3 z" />
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M64,44 h3 v10 h-3 z" />
+</vector>

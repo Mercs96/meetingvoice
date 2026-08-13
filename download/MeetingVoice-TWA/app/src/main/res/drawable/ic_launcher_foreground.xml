@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Foreground del icono del launcher — micrófono blanco centrado (80% del icono) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Cuerpo del micrófono -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,30 h20 a10,10 0 0 1 10,10 v18 a10,10 0 0 1 -10,10 h-20 a10,10 0 0 1 -10,-10 v-18 a10,10 0 0 1 10,-10 z" />
+
+    <!-- Soporte -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M53,70 h2 v10 h-2 z" />
+
+    <!-- Base -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,82 h28 v3 h-28 z" />
+
+    <!-- Ondas -->
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M48,42 h2 v14 h-2 z" />
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M53,38 h2 v22 h-2 z" />
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M58,44 h2 v10 h-2 z" />
+</vector>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modo oscuro opcional — si tu PWA tiene dark mode, este tema se aplica de noche -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.MeetingVoice" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">#16162A</item>
+    </style>
+</resources>

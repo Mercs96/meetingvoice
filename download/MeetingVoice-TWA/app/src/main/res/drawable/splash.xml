@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  splash.xml — fondo del splash screen.
+  Usa un color sólido (colorPrimary) como fondo y un logo centrado.
+  El logo está en drawable/ic_splash_logo.xml (vectorial, sin PNG).
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo -->
+    <item android:drawable="@color/colorPrimary" />
+    <!-- Logo centrado (96dp en el centro) -->
+    <item
+        android:drawable="@drawable/ic_splash_logo"
+        android:gravity="center"
+        android:width="120dp"
+        android:height="120dp" />
+</layer-list>

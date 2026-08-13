@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  themes.xml — Tema de la app Android (no el de la web, este es el nativo).
+  Se usa para: splash screen, barra de estado, transiciones.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema principal — hereda de Theme.MaterialComponents.Light.NoActionBar
+         porque la UI real la renderiza Chrome dentro de la TWA -->
+    <style name="Theme.MeetingVoice" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- Splash screen theme — se muestra durante el arranque -->
+    <style name="Theme.MeetingVoice.Splash" parent="Theme.MeetingVoice">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+</resources>

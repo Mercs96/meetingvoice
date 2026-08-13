@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  colors.xml — Paleta de colores de la app.
+  Deben coincidir con los colores del manifest.json de tu PWA.
+-->
+<resources>
+    <!-- Color principal — violeta/índigo Fireflies-style -->
+    <color name="colorPrimary">#6366F1</color>
+    <color name="colorPrimaryDark">#4F46E5</color>
+    <color name="colorAccent">#8B5CF6</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnError">#B91C1C</color>
+</resources>
