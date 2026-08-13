@@ -1,0 +1,80 @@
+// A Meeting Recorder PWA - open source, free
+// Models: meetings, transcript segments, attendees, settings, email logs
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Meeting {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  date        DateTime @default(now())
+  duration    Int      @default(0) // seconds
+  status      String   @default("recording") // recording | completed | transcribed | summarized
+  language    String   @default("es-ES")
+  tags        String   @default("[]") // JSON array of strings
+  audioUrl    String?  // blob URL or stored path
+  summary     String?
+  keyPoints   String?  // JSON array
+  actionItems String?  // JSON array
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  segments   Segment[]
+  attendees  Attendee[]
+  emails     EmailLog[]
+}
+
+model Segment {
+  id         String   @id @default(cuid())
+  meetingId  String
+  speaker    String   @default("Hablante 1")
+  text       String
+  startTime  Float    // seconds
+  endTime    Float    // seconds
+  confidence Float    @default(0.0)
+  createdAt  DateTime @default(now())
+
+  meeting    Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+
+  @@index([meetingId])
+}
+
+model Attendee {
+  id        String   @id @default(cuid())
+  meetingId String
+  name      String
+  email     String?
+  role      String?  // e.g. "Organizador", "Participante"
+  createdAt DateTime @default(now())
+
+  meeting   Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+
+  @@index([meetingId])
+}
+
+model EmailLog {
+  id         String   @id @default(cuid())
+  meetingId  String
+  toEmail    String
+  subject    String
+  bodyPreview String // first 200 chars
+  status     String   @default("sent") // sent | failed
+  sentAt     DateTime @default(now())
+
+  meeting    Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+
+  @@index([meetingId])
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
